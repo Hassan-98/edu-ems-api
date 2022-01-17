@@ -35,14 +35,8 @@ const login = async (req, res, next) => {
     const updatedUser = await USER.findByIdAndUpdate(user._id, { $push: { logs: log._id } }, { new: true, runValidators: true })
       .populate('activations')
       .populate('logs');
-    
-    res.cookie("eduems-dashboard-login-session", token, {
-      secure: false,
-      httpOnly: false,
-      expires: rememberMe ? new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000) : new Date(new Date().getTime() + 6 * 60 * 60 * 1000),
-    });
 
-    res.json({ success: {updatedUser, token} });
+    res.json({ success: { user: updatedUser, token } });
   } catch (err) {
     console.error(`Error while login =>`, err.message);
     next(err);

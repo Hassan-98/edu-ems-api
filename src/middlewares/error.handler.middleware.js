@@ -11,5 +11,5 @@ module.exports = (err, req, res, next) => {
   console.error('\n\x1b[31m%s\x1b[0m\n', errorMessage);
   console.error(err.stack);
 
-  return res.status(statusCode).json({err: errorMessage});
+  return res.json({err: errorMessage});
 }

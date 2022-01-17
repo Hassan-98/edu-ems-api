@@ -1,0 +1,867 @@
+{
+	"info": {
+		"_postman_id": "fcbb74b1-c12c-4d0a-809d-24a560da901f",
+		"name": "Edu EMS - Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "POST: Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiMTIzNDU2Nzg5MCIsInJvbGUiOiJhZG1pbiJ9.YEC_Zpe5wBEIlGz1zI-H68nYjRP-SgYrX5YO_rwJ0aU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"7assan.3li1998@gmail.com\",\r\n    \"password\": \"123147hH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiMTIzNDU2Nzg5MCIsInJvbGUiOiJhZG1pbiJ9.YEC_Zpe5wBEIlGz1zI-H68nYjRP-SgYrX5YO_rwJ0aU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testaccount1@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Validate Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlMzgyYjhmZWYyYTA1M2ZjMTM1YjlhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzAxODcyLCJleHAiOjE2NDIzMTI2NzJ9.-s2CMKHtuV00CbH9jes2DAIrVAOwF4Z0j3E_Mzing4g",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlMzgyYjhmZWYyYTA1M2ZjMTM1YjlhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzAxODcyLCJleHAiOjE2NDIzMTI2NzJ9.-s2CMKHtuV00CbH9jes2DAIrVAOwF4Z0j3E_Mzing4g\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth/validate",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiMTIzNDU2Nzg5MCIsInJvbGUiOiJhZG1pbiJ9.YEC_Zpe5wBEIlGz1zI-H68nYjRP-SgYrX5YO_rwJ0aU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"7assan.3li1998@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth/reset",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Verify Reset Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiMTIzNDU2Nzg5MCIsInJvbGUiOiJhZG1pbiJ9.YEC_Zpe5wBEIlGz1zI-H68nYjRP-SgYrX5YO_rwJ0aU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWUzODJiOGZlZjJhMDUzZmMxMzViOWEiLCJpYXQiOjE2NDIzMDEzMDgsImV4cCI6MTY0MjMwNDkwOH0.In7KhyueorqoFhFu3gpeFWoYdqXLsbwtcaPf-OKIBOc\",\r\n    \"userId\": \"61e382b8fef2a053fc135b9a\",\r\n    \"newPassword\": \"123147hH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth/verify-change",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth",
+								"verify-change"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CLIENTS",
+			"item": [
+				{
+					"name": "GET: All Clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlMzgyYjhmZWYyYTA1M2ZjMTM1YjlhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzExODUxLCJleHAiOjE2NDIzMzM0NTF9.Gb80tW1fcgWn0_r00btcLPPhOjy0BfpBJDL5FQZXZnY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/clients",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET: Get Client By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlMzgyYjhmZWYyYTA1M2ZjMTM1YjlhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzExODUxLCJleHAiOjE2NDIzMzM0NTF9.Gb80tW1fcgWn0_r00btcLPPhOjy0BfpBJDL5FQZXZnY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/clients/61e3ba4d81a71f23a092bed6",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients",
+								"61e3ba4d81a71f23a092bed6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Create Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzg3OTA0LCJleHAiOjE2NDI0MDk1MDR9.qWoSXbBFPoVaLEw34OLJXzSkgdYpj-AGqLVsUSxlomE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"testaccount1\",\r\n    \"email\": \"testaccount1@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"client\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/clients",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Change Client Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzE0ODM0LCJleHAiOjE2NDIzMzY0MzR9.r0RmY8bBB-xBKCE8srn3TdKXSfJYyXKS5FYt7xPIHD0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/clients/change-password?clientId=61e3ba4d81a71f23a092bed6",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients",
+								"change-password"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "61e3ba4d81a71f23a092bed6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Add Activations To Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzg4MDA3LCJleHAiOjE2NDI0MDk2MDd9.ExUoGmHRqODAfuvtEtqs51PMUxi0vBgPnGlcbTJ6WUo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"activations\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/clients/add-activations?clientId=61e4d9df85eeed55e07df48a",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients",
+								"add-activations"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "61e4d9df85eeed55e07df48a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE: Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzE0ODM0LCJleHAiOjE2NDIzMzY0MzR9.r0RmY8bBB-xBKCE8srn3TdKXSfJYyXKS5FYt7xPIHD0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/clients?clientId=61e3bbeb261de37b598f1f09",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"clients"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "61e3bbeb261de37b598f1f09"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "GET: Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/users?userId=61e4d9df85eeed55e07df48a",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "61e4d9df85eeed55e07df48a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Update User Data",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2JmMzIwZmEwNjVlN2NkOTc2MGRhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjMxNTg1MSwiZXhwIjoxNjQyMzM3NDUxfQ.RViE8aaIXnY54GztwAtFjCyJ2OBdBiFoXs75EETqqms",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"01093709922\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/users/change-info?userId=61e3bf320fa065e7cd9760da",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"users",
+								"change-info"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "61e3bf320fa065e7cd9760da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Change User Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2JmMzIwZmEwNjVlN2NkOTc2MGRhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjMxNTg1MSwiZXhwIjoxNjQyMzM3NDUxfQ.RViE8aaIXnY54GztwAtFjCyJ2OBdBiFoXs75EETqqms",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"123456\",\r\n    \"newPassword\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/users/change-password?userId=61e3bf320fa065e7cd9760da",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"users",
+								"change-password"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "61e3bf320fa065e7cd9760da"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ACTIVAIONS",
+			"item": [
+				{
+					"name": "GET: All Acivations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/activations",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"activations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET: Get Activaion By Serial Code",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlMzgyYjhmZWYyYTA1M2ZjMTM1YjlhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzExODUxLCJleHAiOjE2NDIzMzM0NTF9.Gb80tW1fcgWn0_r00btcLPPhOjy0BfpBJDL5FQZXZnY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/activations/5c03c6b0-b4e3-4a31-9cab-528095f460dd",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"activations",
+								"5c03c6b0-b4e3-4a31-9cab-528095f460dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Register Activation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"61e4d9df85eeed55e07df48a\",\r\n    \"serialCode\": \"84f8bb13-5208-499b-a601-8e851d0d4bdf\",\r\n    \"registerationDate\": \"2022-01-16T01:46:43.881+00:00\",\r\n    \"activationDate\": \"2022-01-16T01:46:43.881+00:00\",\r\n    \"macAddress\": \"2C-F0-5D-75-5C-DC\",\r\n    \"statue\": \"Idle\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/activations",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"activations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Reset Activation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/activations?activationId=61e4e042767b784ace59771d",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"activations"
+							],
+							"query": [
+								{
+									"key": "activationId",
+									"value": "61e4e042767b784ace59771d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE: Delete Activaion",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/activations?activationId=61e4ded69673b36073b4b541",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"activations"
+							],
+							"query": [
+								{
+									"key": "activationId",
+									"value": "61e4ded69673b36073b4b541"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROGRAM REQUESTS",
+			"item": [
+				{
+					"name": "GET: All Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzkzMDc3LCJleHAiOjE2NDI0MTQ2Nzd9.T5clXYcdswcvKzTF1qblBwpF2ES6v9tN-g0m2rX086E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/requests/program",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"program"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Create Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"hassan ali\",\r\n    \"emailAddress\": \"asdasd@sdad.com\",\r\n    \"phone\": \"0114563211\",\r\n    \"title\": \"Request Demo Version\",\r\n    \"details\": \"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/requests/program",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"program"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Close Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzkzMDc3LCJleHAiOjE2NDI0MTQ2Nzd9.T5clXYcdswcvKzTF1qblBwpF2ES6v9tN-g0m2rX086E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/requests/program?requestId=61e4edbd5e51ec0ef2d879d1",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"program"
+							],
+							"query": [
+								{
+									"key": "requestId",
+									"value": "61e4edbd5e51ec0ef2d879d1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ACTIVATIONS REQUESTS",
+			"item": [
+				{
+					"name": "GET: All Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzkzMDc3LCJleHAiOjE2NDI0MTQ2Nzd9.T5clXYcdswcvKzTF1qblBwpF2ES6v9tN-g0m2rX086E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/requests/activation",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"activation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST: Create Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Request 1 Activation\",\r\n    \"details\": \"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/requests/activation",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"activation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: Close Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlM2I5MmNhZDgyZTE1NTM4ZjZhOTlmIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQyMzkzMDc3LCJleHAiOjE2NDI0MTQ2Nzd9.T5clXYcdswcvKzTF1qblBwpF2ES6v9tN-g0m2rX086E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/requests/activation?requestId=61e4ef356ad4007e053dfd3b",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"requests",
+								"activation"
+							],
+							"query": [
+								{
+									"key": "requestId",
+									"value": "61e4ef356ad4007e053dfd3b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOGS",
+			"item": [
+				{
+					"name": "GET: Get All Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjFlNGQ5ZGY4NWVlZWQ1NWUwN2RmNDhhIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY0MjM4ODA0NiwiZXhwIjoxNjQyNDA5NjQ2fQ.1D731cQ0pqfUoqa0w9hfSwc7q9F3jdMxk5DB7W9SWbI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API}}/logs",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"logs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		}
+	]
+}

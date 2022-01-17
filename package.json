@@ -1,0 +1,38 @@
+{
+  "name": "eduems-dashboard-api",
+  "version": "1.0.0",
+  "description": "Edu EMS Management Dashboard API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --watch .",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "Hassan Ali",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.0",
+    "mongoose": "^6.1.6",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

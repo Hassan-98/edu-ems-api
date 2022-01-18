@@ -34,7 +34,7 @@ const registerActivation = async (req, res, next) => {
   try {
     const activationData = {
       ...req.body,
-      user: req.body.user
+      user: req.user.id
     }
 
     const { availableActivations } = await USER.findById(activationData.user).select({ availableActivations: 1 });

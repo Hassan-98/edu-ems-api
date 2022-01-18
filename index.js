@@ -11,7 +11,8 @@ const cookieParser = require("cookie-parser");
 const cors = require('cors');
 const compression = require('compression');
 const helmet = require('helmet');
-const morgan = require('morgan')
+const morgan = require('morgan');
+const { getClientIp } = require('@supercharge/request-ip');
 
 // Enable ENV Vars In Development
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -36,6 +37,11 @@ app.use(compression());
 app.use(helmet());
 // Set Morgan Logger
 app.use(morgan('\n:method - :url :status - :response-time ms'));
+
+app.use((req, res, next) => {
+  req.ip = getClientIp(req);
+  next();
+})
 
 // Cross-Origin Resource Sharing
 var corsOptionsDelegate = function (req, callback) {

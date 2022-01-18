@@ -37,13 +37,15 @@ const registerActivation = async (req, res, next) => {
       user: req.user.id
     }
 
+    console.log(activationData);
+
     const { availableActivations } = await USER.findById(activationData.user).select({ availableActivations: 1 });
 
     if (availableActivations <= 0)  throw new Error("You don't have available activations to register");
 
     const activation = await ACTIVATION.create(activationData);
 
-    const log = await LOG.create({ type: "register activation", location: req.ip, user: req.body.user });
+    const log = await LOG.create({ type: "register activation", location: req.ip, user: activationData.user });
 
     await USER.findByIdAndUpdate(activationData.user, { $push: { activations: activation._id, logs: log._id }, $inc: { availableActivations: -1 } })
 

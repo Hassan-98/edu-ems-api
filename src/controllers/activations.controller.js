@@ -75,7 +75,7 @@ const resetActivation = async (req, res, next) => {
 
     const log = await LOG.create({ type: "reset activation", location: req.ip, user: req.user.id });
 
-    await USER.findByIdAndUpdate(req.user.id, { $push: { logs: log._id }, $inc: { availableActivations: 1 } });
+    await USER.findByIdAndUpdate(req.user.id, { $push: { logs: log._id }, $inc: { availableActivations: +1 } });
 
     res.json({ success: activation });
   } catch (err) {

@@ -65,6 +65,8 @@ const resetActivation = async (req, res, next) => {
     const activation = await ACTIVATION.findById(activationId)
       .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
 
+    if (!activation.activationDate && !activation.macAddress) throw new Error("Cannot reset Idle activation");
+
     delete activation._doc.activationDate
 
     delete activation._doc.macAddress

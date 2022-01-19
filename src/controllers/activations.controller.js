@@ -65,10 +65,8 @@ const resetActivation = async (req, res, next) => {
 
     if (!activation.activationDate && !activation.macAddress) throw new Error("Cannot reset Idle activation");
 
-    delete activation._doc.activationDate
-
-    delete activation._doc.macAddress
-
+    activation.activationDate = "-";
+    activation.macAddress = "-";
     activation.statue = "Idle";
 
     await activation.save();

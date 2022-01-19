@@ -75,7 +75,7 @@ const resetPassword = async (req, res, next) => {
 
     if (savedToken.token && savedToken.expiration > new Date().getTime()) throw new Error("Reset password email already sent to this email address");
     
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ user: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     
     user.resetToken = {
       token,

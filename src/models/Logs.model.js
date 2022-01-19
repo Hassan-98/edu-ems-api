@@ -14,11 +14,8 @@ const LogsSchema = new mongoose.Schema({
     }
   },
   location: {
-    type: String,
-    required: [true, "Log location is required!"],
-    validate (location) {
-      if (validator.isEmpty(location)) throw new Error("Log location can't be empty!")
-    }
+    type: Object,
+    required: [true, "Log location is required!"]
   },
   user: {
     type: mongoose.Types.ObjectId,

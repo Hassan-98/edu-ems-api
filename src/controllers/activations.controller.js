@@ -4,7 +4,7 @@ const LOG = require("../models/Logs.model");
 
 const getAllActivations = async (req, res, next) => {
   try {
-    const activations = await ACTIVATION.find({}, null, { sort: { createdAt: -1 } })
+    const activations = await ACTIVATION.find({ user: req.user.id }, null, { sort: { createdAt: -1 } })
       .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
 
     res.json({ success: activations });
@@ -36,8 +36,6 @@ const registerActivation = async (req, res, next) => {
       ...req.body,
       user: req.user.id
     }
-
-    console.log(activationData);
 
     const { availableActivations } = await USER.findById(activationData.user).select({ availableActivations: 1 });
 

@@ -82,7 +82,7 @@ const addActivationsToClient = async (req, res, next) => {
 
     if (!clientId) throw new Error("Client id is required as a query");
 
-    const client = await USER.findByIdAndUpdate(clientId, { $inc: { availableActivations: +activations } }, { 
+    const client = await USER.findByIdAndUpdate(clientId, { $inc: { availableActivations: activations } }, { 
       new: true,
       runValidators: true
     }).select({ password: 0 });

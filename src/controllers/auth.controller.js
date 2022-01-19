@@ -86,7 +86,7 @@ const resetPassword = async (req, res, next) => {
 
     const resetPasswordTemplate = createResetPasswordTemplate({
       username: user.username,
-      verifyLink: `${process.env.CLIENT_URL}/verify?t=${token}`
+      verifyLink: `${process.env.CLIENT_URL}/reset?t=${token}`
     })
 
     const mail_content = {

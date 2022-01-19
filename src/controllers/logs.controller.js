@@ -2,7 +2,7 @@ const LOG = require("../models/Logs.model");
 
 const getAllLogs = async (req, res, next) => {
   try {
-    const logs = await LOG.find({ user: req.user.id })
+    const logs = await LOG.find({ user: req.user.id }, null, { sort: { createdAt: -1 } })
       .populate("user", { fisrtName: 1, lastName: 1, username: 1, email: 1, photo: 1 });
 
     res.json({ success: logs });

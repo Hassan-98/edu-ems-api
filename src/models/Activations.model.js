@@ -15,6 +15,7 @@ const ActivationsSchema = new mongoose.Schema({
   macAddress: {
     type: String,
     trim: true,
+    default: "-",
     validate (macAddress) {
       if (validator.isEmpty(macAddress)) throw new Error("MAC Address can't be empty")
       else if (macAddress !== "-" && !validator.isMACAddress(macAddress)) throw new Error("MAC Address is not valid")
@@ -22,6 +23,7 @@ const ActivationsSchema = new mongoose.Schema({
   },
   activationDate: {
     type: String,
+    default: "-",
     validate (activationDate) {
       if (validator.isEmpty(activationDate)) throw new Error("Activation date can't be empty")
     }

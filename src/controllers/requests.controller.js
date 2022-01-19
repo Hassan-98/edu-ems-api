@@ -62,7 +62,7 @@ const createActivationsRequest = async (req, res, next) => {
     
     const request = await REQUEST.create({ ...activationRequestData, user: req.user.id, type: 'activation' });
 
-    const log = await LOG.create({ type: "request activation", location: req.ip, user: req.user.id });
+    const log = await LOG.create({ type: "request activation", location: req.location, user: req.user.id });
 
     await USER.findByIdAndUpdate(req.user.id, { $push: { logs: log._id } });
 

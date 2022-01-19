@@ -36,7 +36,7 @@ const changeUserInfo = async (req, res, next) => {
 
     if (userUpdates.availableActivations) throw new Error("You don't have permissions to change user available activations");
 
-    const log = await LOG.create({ type: "change info", location: req.ip, user: userId });
+    const log = await LOG.create({ type: "change info", location: req.location, user: userId });
 
     userUpdates.$push = { logs: log._id };
 
@@ -77,7 +77,7 @@ const changeUserPassword = async (req, res, next) => {
 
     await user.save();
 
-    const log = await LOG.create({ type: "change password", location: req.ip, user: userId });
+    const log = await LOG.create({ type: "change password", location: req.location, user: userId });
 
     await USER.findByIdAndUpdate(userId, { $push: { logs: log._id } });
 

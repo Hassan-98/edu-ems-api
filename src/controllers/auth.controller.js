@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
 
     const token = jwt.sign({user: user._id, role: user.role}, process.env.JWT_SECRET, {expiresIn: rememberMe ? '7d' : '6h'});
 
-    const log = await LOG.create({ type: "login", location: req.ip, user: user._id });
+    const log = await LOG.create({ type: "login", location: req.location, user: user._id });
 
     const updatedUser = await USER.findByIdAndUpdate(user._id, { $push: { logs: log._id } }, { new: true, runValidators: true })
       .populate('activations')
@@ -128,7 +128,7 @@ const verifyResetTokenAndChangePassword = async (req, res, next) => {
 
     await user.save();
 
-    const log = await LOG.create({ type: "reset password", location: req.ip, user: user._id });
+    const log = await LOG.create({ type: "reset password", location: req.location, user: user._id });
 
     await USER.findByIdAndUpdate(user._id, { $push: { logs: log._id } });
     

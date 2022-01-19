@@ -12,7 +12,7 @@ const cors = require('cors');
 const compression = require('compression');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const { getClientIp } = require('@supercharge/request-ip');
+const axios = require('axios');
 
 // Enable ENV Vars In Development
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -38,8 +38,9 @@ app.use(helmet());
 // Set Morgan Logger
 app.use(morgan('\n:method - :url :status - :response-time ms'));
 
-app.use((req, res, next) => {
-  req.ip = getClientIp(req);
+app.use(async (req, res, next) => {
+  const { data: location } = await axios.get(`http://ip-api.com/json/`);
+  req.location = location;
   next();
 })
 

@@ -43,7 +43,7 @@ const registerActivation = async (req, res, next) => {
 
     const activation = await ACTIVATION.create(activationData);
 
-    const log = await LOG.create({ type: "register activation", location: req.ip, user: activationData.user });
+    const log = await LOG.create({ type: "register activation", location: req.location, user: activationData.user });
 
     await USER.findByIdAndUpdate(activationData.user, { $push: { activations: activation._id, logs: log._id }, $inc: { availableActivations: -1 } })
 
@@ -71,7 +71,7 @@ const resetActivation = async (req, res, next) => {
 
     await activation.save();
 
-    const log = await LOG.create({ type: "reset activation", location: req.ip, user: req.user.id });
+    const log = await LOG.create({ type: "reset activation", location: req.location, user: req.user.id });
 
     await USER.findByIdAndUpdate(req.user.id, { $push: { logs: log._id } });
 
@@ -92,7 +92,7 @@ const deleteActivation = async (req, res, next) => {
 
     if (!deletedActivation) throw new Error("Activation doesn't exist");
 
-    const log = await LOG.create({ type: "delete activation", location: req.ip, user: req.user.id });
+    const log = await LOG.create({ type: "delete activation", location: req.location, user: req.user.id });
     
     await USER.findByIdAndUpdate(req.user.id, { $pull: { activations: activationId }, $push: { logs: log._id }, $inc: { availableActivations: +1 } })
 

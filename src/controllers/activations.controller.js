@@ -69,6 +69,8 @@ const resetActivation = async (req, res, next) => {
 
     delete activation._doc.macAddress
 
+    activation.statue = "Idle";
+
     await activation.save();
 
     const log = await LOG.create({ type: "reset activation", location: req.ip, user: req.user.id });

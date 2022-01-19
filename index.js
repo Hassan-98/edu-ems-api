@@ -39,10 +39,16 @@ app.use(helmet());
 app.use(morgan('\n:method - :url :status - :response-time ms'));
 
 app.use(async (req, res, next) => {
-  const { data: location } = await axios.get(`http://ip-api.com/json/`);
+  const ip = Object.values(require("os").networkInterfaces())
+          .flat()
+          .filter((item) => !item.internal && item.family === "IPv4")
+          .find(Boolean).address;
+
+  const { data: location } = await axios.get(`http://ip-api.com/json/${ip}`);
+  console.log(location);
   req.location = location;
   next();
-})
+});
 
 // Cross-Origin Resource Sharing
 var corsOptionsDelegate = function (req, callback) {

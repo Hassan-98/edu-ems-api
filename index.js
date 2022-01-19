@@ -38,15 +38,15 @@ app.use(helmet());
 // Set Morgan Logger
 app.use(morgan('\n:method - :url :status - :response-time ms'));
 
+const publicIp = require('public-ip');
+
 app.use(async (req, res, next) => {
-  const ip = Object.values(require("os").networkInterfaces())
-          .flat()
-          .filter((item) => !item.internal && item.family === "IPv4")
-          .find(Boolean).address;
+  const ip = await publicIp.v4();
 
   const { data: location } = await axios.get(`http://ip-api.com/json/${ip}`);
-  console.log(location);
+  
   req.location = location;
+  
   next();
 });
 

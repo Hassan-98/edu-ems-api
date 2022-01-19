@@ -4,7 +4,7 @@ const LOG = require("../models/Logs.model");
 
 const getAllProgramRequests = async (req, res, next) => {
   try {
-    const programRequests = await REQUEST.find({ type: 'program' });
+    const programRequests = await REQUEST.find({ type: 'program' }, null, { sort: { createdAt: -1 } });
 
     res.json({ success: programRequests });
   } catch (err) {
@@ -46,7 +46,7 @@ const closeProgramRequest = async (req, res, next) => {
 
 const getAllActivationsRequests = async (req, res, next) => {
   try {
-    const activationRequests = await REQUEST.find({ type: 'activation' })
+    const activationRequests = await REQUEST.find({ type: 'activation' }, null, { sort: { createdAt: -1 } })
       .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
 
     res.json({ success: activationRequests });

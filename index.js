@@ -38,19 +38,13 @@ app.use(helmet());
 // Set Morgan Logger
 app.use(morgan('\n:method - :url :status - :response-time ms'));
 
-const publicIp = require('public-ip');
-
 app.use(async (req, res, next) => {
   var ipaddress = (req.headers['x-forwarded-for'] || 
     req.connection.remoteAddress || 
     req.socket.remoteAddress || 
     req.connection.socket.remoteAddress).split(",")[0];
-    
-  console.log(ipaddress);
 
-  const ip = await publicIp.v4();
-
-  const { data: location } = await axios.get(`http://ip-api.com/json/${ip}`);
+  const { data: location } = await axios.get(`http://ip-api.com/json/${ipaddress}`);
   
   req.location = location;
 

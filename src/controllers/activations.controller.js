@@ -31,9 +31,8 @@ const validateActivationBySerialCode = async (req, res, next) => {
     if (!activation) throw new Error("Invalid activation serial code");
 
     const sentMACCheck = validator.isMACAddress(macAddress);
-    const savedMACCheck = validator.isMACAddress(activation.macAddress);
 
-    if (!sentMACCheck || !savedMACCheck) throw new Error("Invalid activation please reactivate again");
+    if (!sentMACCheck) throw new Error("Invalid activation MAC Address");
 
     const sentMAC = macaddr.parse(macAddress);
     const savedMAC = macaddr.parse(activation.macAddress);

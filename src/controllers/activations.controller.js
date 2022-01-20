@@ -54,6 +54,34 @@ const registerActivation = async (req, res, next) => {
   }
 }
 
+const activateActivation = async (req, res, next) => {
+  try {
+    const { serialCode } = req.params;
+
+    const { macAddress } = req.body;
+
+    if (!serialCode) throw new Error("Serial Code is required as a param");
+
+    if (!macAddress) throw new Error("MAC Address is required");
+
+    const activation = await ACTIVATION.findOne({ serialCode })
+      .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
+
+    if (activation.activationDate || (activation.macAddress && activation.macAddress !== macAddress)) throw new Error("Activation is already active on another device");
+
+    activation.activationDate = new Date();
+    activation.macAddress = macAddress;
+    activation.statue = "Active";
+
+    await activation.save();
+
+    res.json({ success: activation });
+  } catch (err) {
+    console.error(`Error while resetActivation =>`, err.message);
+    next(err);
+  }
+}
+
 const resetActivation = async (req, res, next) => {
   try {
     const { activationId } = req.query;
@@ -106,6 +134,7 @@ const deleteActivation = async (req, res, next) => {
 module.exports = {
   getAllActivations,
   getActivationBySerialCode,
+  activateActivation,
   registerActivation,
   resetActivation,
   deleteActivation

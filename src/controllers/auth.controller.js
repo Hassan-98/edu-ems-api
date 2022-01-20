@@ -53,7 +53,8 @@ const validateToken = async (req, res, next) => {
 
       const user = await USER.findById(userId)
         .populate("activations")
-        .populate("logs");
+        .populate("logs")
+        .select({ password: 0 });
 
       res.json({ success: user });
    } catch (err) {

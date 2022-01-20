@@ -8,6 +8,9 @@ router.get('/', Authenticated, activationsController.getAllActivations);
 /* GET: Get Activation By Serial Code */
 router.get('/:serialCode', activationsController.getActivationBySerialCode);
 
+/* POST: Activate Activation By Serial Code */
+router.post('/:serialCode', activationsController.activateActivation);
+
 /* POST: Register User Activation */
 router.post('/', Authenticated, activationsController.registerActivation);
 

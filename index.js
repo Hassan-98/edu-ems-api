@@ -13,6 +13,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const axios = require('axios');
+const getMAC = require('getmac').default;
 
 // Enable ENV Vars In Development
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -48,8 +49,12 @@ app.use(async (req, res, next) => {
   
   req.location = location;
 
+  req.macAddress = getMAC();
+
   next();
 });
+
+
 
 // Cross-Origin Resource Sharing
 var corsOptionsDelegate = function (req, callback) {

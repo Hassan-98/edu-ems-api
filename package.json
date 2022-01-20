@@ -24,7 +24,6 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.7",
     "express": "^4.17.2",
-    "getmac": "^5.20.0",
     "helmet": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.0",

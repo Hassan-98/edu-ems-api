@@ -13,7 +13,6 @@ const compression = require('compression');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const axios = require('axios');
-const getMAC = require('getmac').default;
 
 // Enable ENV Vars In Development
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -48,8 +47,6 @@ app.use(async (req, res, next) => {
   const { data: location } = await axios.get(`http://ip-api.com/json/${ipaddress}`);
   
   req.location = location;
-
-  req.macAddress = getMAC();
 
   next();
 });

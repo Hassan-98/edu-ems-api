@@ -1,6 +1,8 @@
 const ACTIVATION = require("../models/Activations.model");
 const USER = require("../models/Users.model");
 const LOG = require("../models/Logs.model");
+const macaddr = require("macaddr");
+const validator = require('validator');
 const dayjs = require("dayjs");
 
 const getAllActivations = async (req, res, next) => {
@@ -15,14 +17,30 @@ const getAllActivations = async (req, res, next) => {
   }
 }
 
-const getActivationBySerialCode = async (req, res, next) => {
+const validateActivationBySerialCode = async (req, res, next) => {
   try {
-    const { serialCode } = req.params;
+    const { serialCode, macAddress } = req.body;
 
-    if (!serialCode) throw new Error("Serial Code is required as a param");
+    if (!serialCode) throw new Error("Serial Code is required!");
+
+    if (!macAddress) throw new Error("MAC Address is required!");
 
     const activation = await ACTIVATION.findOne({ serialCode })
       .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
+    
+    if (!activation) throw new Error("Invalid activation serial code");
+
+    const sentMACCheck = validator.isMACAddress(macAddress);
+    const savedMACCheck = validator.isMACAddress(activation.macAddress);
+
+    if (!sentMACCheck || !savedMACCheck) throw new Error("Invalid activation please reactivate again");
+
+    const sentMAC = macaddr.parse(macAddress);
+    const savedMAC = macaddr.parse(activation.macAddress);
+
+    const result = sentMAC.compare(savedMAC);
+
+    if (result !== 0) throw new Error("Invalid activation please reactivate again");
 
     res.json({ success: activation });
   } catch (err) {
@@ -136,7 +154,7 @@ const deleteActivation = async (req, res, next) => {
 
 module.exports = {
   getAllActivations,
-  getActivationBySerialCode,
+  validateActivationBySerialCode,
   activateActivation,
   registerActivation,
   resetActivation,

@@ -51,8 +51,6 @@ app.use(async (req, res, next) => {
   next();
 });
 
-
-
 // Cross-Origin Resource Sharing
 var corsOptionsDelegate = function (req, callback) {
   // CORS Whitelist URLs

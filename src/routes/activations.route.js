@@ -5,8 +5,8 @@ const { Authenticated } = require('../middlewares/auth.middleware');
 /* GET: Get All User Activations */
 router.get('/', Authenticated, activationsController.getAllActivations);
 
-/* GET: Get Activation By Serial Code */
-router.get('/:serialCode', activationsController.getActivationBySerialCode);
+/* GET: Validate Activation By Serial Code */
+router.post('/validate', activationsController.validateActivationBySerialCode);
 
 /* POST: Activate Activation By Serial Code */
 router.post('/:serialCode', activationsController.activateActivation);

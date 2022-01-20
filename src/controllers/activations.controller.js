@@ -1,6 +1,7 @@
 const ACTIVATION = require("../models/Activations.model");
 const USER = require("../models/Users.model");
 const LOG = require("../models/Logs.model");
+const dayjs = require("dayjs");
 
 const getAllActivations = async (req, res, next) => {
   try {
@@ -69,7 +70,7 @@ const activateActivation = async (req, res, next) => {
 
     if (activation.activationDate !== '-' || (activation.macAddress !== '-' && activation.macAddress !== macAddress)) throw new Error("Activation is already active on another device");
 
-    activation.activationDate = new Date();
+    activation.activationDate = dayjs(new Date()).format("DD/MM/YYYY | hh:mm a");
     activation.macAddress = macAddress;
     activation.statue = "Active";
 

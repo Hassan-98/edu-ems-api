@@ -58,7 +58,7 @@ const activateActivation = async (req, res, next) => {
   try {
     const { serialCode } = req.params;
 
-    const { macAddress } = req.body;
+    const { macAddress } = req;
 
     if (!serialCode) throw new Error("Serial Code is required as a param");
 

@@ -67,7 +67,7 @@ const activateActivation = async (req, res, next) => {
     const activation = await ACTIVATION.findOne({ serialCode })
       .populate("user", { username: 1, email: 1, photo: 1, availableActivations: 1 });
 
-    if (activation.activationDate || (activation.macAddress && activation.macAddress !== macAddress)) throw new Error("Activation is already active on another device");
+    if (activation.activationDate !== '-' || activation.macAddress !== macAddress) throw new Error("Activation is already active on another device");
 
     activation.activationDate = new Date();
     activation.macAddress = macAddress;

@@ -87,6 +87,8 @@ const activateActivation = async (req, res, next) => {
 
     if (!activation) throw new Error("Invalid activation serial code");
 
+    console.log(activation.macAddress.toLowerCase(), macAddress.toLowerCase());
+
     if (activation.activationDate !== '-' || (activation.macAddress !== '-' && activation.macAddress.toLowerCase() !== macAddress.toLowerCase())) throw new Error("Activation is already active on another device");
 
     if (activation.macAddress.toLowerCase() === macAddress.toLowerCase()) return res.json({ success: activation });

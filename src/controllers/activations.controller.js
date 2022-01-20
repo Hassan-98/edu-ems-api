@@ -89,6 +89,8 @@ const activateActivation = async (req, res, next) => {
 
     if (activation.activationDate !== '-' || (activation.macAddress !== '-' && activation.macAddress !== macAddress)) throw new Error("Activation is already active on another device");
 
+    if (activation.macAddress === macAddress) return res.json({ success: activation });
+
     activation.activationDate = dayjs(new Date()).format("DD/MM/YYYY | hh:mm a");
     activation.macAddress = macAddress;
     activation.statue = "Active";

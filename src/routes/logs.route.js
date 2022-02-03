@@ -6,10 +6,10 @@ const { Authenticated } = require('../middlewares/auth.middleware');
 router.get('/', Authenticated, logsController.getAllLogs);
 
 /* GET: Get Logs Stats */
-router.get('/stats', Authenticated, logsController.getLogsStats);
+router.get('/range-stats', Authenticated, logsController.getByRangeLogs);
 
 /* GET: Get Logs By Time */
-router.get('/byTime', Authenticated, logsController.getByTimeLogs);
+router.get('/period-stats', Authenticated, logsController.getByPeriodLogs);
 
 
 module.exports = router;

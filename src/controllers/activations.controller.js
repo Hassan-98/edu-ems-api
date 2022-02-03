@@ -4,6 +4,7 @@ const LOG = require("../models/Logs.model");
 const macaddr = require("macaddr");
 const validator = require('validator');
 const dayjs = require("dayjs");
+const createSession = require("../configs/db.config")
 
 const getAllActivations = async (req, res, next) => {
   try {
@@ -87,8 +88,6 @@ const activateActivation = async (req, res, next) => {
 
     if (!activation) throw new Error("Invalid activation serial code");
 
-    console.log(activation.macAddress, macAddress);
-
     if (activation.macAddress && activation.macAddress !== '-' && activation.macAddress !== macAddress) throw new Error("Activation is already active on another device");
 
     if (activation.macAddress === macAddress) return res.json({ success: activation });
@@ -139,14 +138,26 @@ const deleteActivation = async (req, res, next) => {
     const { activationId } = req.query;
 
     if (!activationId) throw new Error("Activation id is required as a query");
-
-    const deletedActivation = await ACTIVATION.findByIdAndDelete(activationId);
-
-    if (!deletedActivation) throw new Error("Activation doesn't exist");
-
-    const log = await LOG.create({ type: "delete activation", location: req.location, user: req.user.id });
     
-    await USER.findByIdAndUpdate(req.user.id, { $pull: { activations: activationId }, $push: { logs: log._id }, $inc: { availableActivations: +1 } })
+    let deletedActivation;
+
+    const session = await createSession();
+
+    await session.withTransaction(async () => {
+      deletedActivation = await ACTIVATION.findByIdAndDelete(activationId);
+
+      if (!deletedActivation) throw new Error("Activation doesn't exist");
+
+      const log = await LOG.create({ type: "delete activation", location: req.location, user: req.user.id });
+      
+      await USER.findByIdAndUpdate(req.user.id, { 
+        $pull: { activations: activationId },
+        $push: { logs: log._id },
+        $inc: { availableActivations: +1 } 
+      });
+    });
+
+    session.endSession();
 
     res.json({ success: true });
   } catch (err) {

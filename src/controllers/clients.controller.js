@@ -1,5 +1,10 @@
 const CryptoJS = require("crypto-js");
 const USER = require("../models/Users.model");
+const ACTIVATION = require("../models/Activations.model");
+const REQUEST = require("../models/Requests.model");
+const LOG = require("../models/Logs.model");
+const { Types: { ObjectId } } = require("mongoose");
+const createSession = require("../utils/createSession");
 
 const getAllClients = async (req, res, next) => {
   try {
@@ -100,9 +105,23 @@ const deleteClient = async (req, res, next) => {
 
     if (!clientId) throw new Error("Client id is required as a query");
 
-    const deletedClient = await USER.findByIdAndDelete(clientId);
+    let deletedClient;
 
-    if (!deletedClient) throw new Error("Client doesn't exist");
+    const session = await createSession();
+
+    await session.withTransaction(async () => {
+      deletedClient = await USER.findByIdAndDelete(clientId);
+
+      if (!deletedClient) throw new Error("Client doesn't exist");
+
+      await ACTIVATION.deleteMany({ user: ObjectId(clientId) });
+
+      await REQUEST.deleteMany({ user: ObjectId(clientId) });
+
+      await LOG.deleteMany({ user: ObjectId(clientId) });
+    });
+
+    session.endSession();
 
     res.json({ success: true });
   } catch (err) {

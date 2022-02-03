@@ -42,6 +42,7 @@ const ActivationsSchema = new mongoose.Schema({
       values: ['Active', 'Idle'],
       message: '{VALUE} is not a valid statue!'
     },
+    default: 'Idle',
     validate (statue) {
       if (validator.isEmpty(statue)) throw new Error("Statue can't be empty")
     }

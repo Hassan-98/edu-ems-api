@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const MONGO_URI = process.env.MONGO_URI;
 
-const connection = mongoose.connect(MONGO_URI, {
+const dbConnection = mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -14,4 +14,4 @@ mongoose.connection.on('error', err => console.log('\x1b[31m%s\x1b[0m', '❌ [Mo
 
 mongoose.connection.on('disconnected', () => console.log('\x1b[31m%s\x1b[0m', '❌ [MongoDB] Disconnected...'));
 
-module.exports = connection;
+module.exports = dbConnection;

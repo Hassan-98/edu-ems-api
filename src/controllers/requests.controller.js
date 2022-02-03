@@ -97,7 +97,7 @@ const deleteRequest = async (req, res, next) => {
 
     if (!requestId) throw new Error("Request id is required as a query");
 
-    const deletedRequest = await REQUEST.findByIdAndDelete(requestId);
+    let deletedRequest = await REQUEST.findByIdAndDelete(requestId);
 
     if (!deletedRequest) throw new Error("Request doesn't exist");
 

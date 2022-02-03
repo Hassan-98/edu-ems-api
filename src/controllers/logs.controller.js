@@ -5,7 +5,7 @@ const { ObjectId } = require("mongodb");
 const getAllLogs = async (req, res, next) => {
   try {
     const logs = await LOG.find({ user: req.user.id }, null, { sort: { createdAt: -1 } })
-      .populate("user", { fisrtName: 1, lastName: 1, username: 1, email: 1, photo: 1 });
+      .populate("user", { firstName: 1, lastName: 1, username: 1, email: 1, photo: 1 });
 
     res.json({ success: logs });
   } catch (err) {
@@ -27,7 +27,7 @@ const getByRangeLogs = async (req, res, next) => {
         $lte: dayjs(Date.now()).endOf('day').toDate()
       }
     }, null, { sort: { createdAt: -1 } })
-      .populate("user", { fisrtName: 1, lastName: 1, username: 1, email: 1, photo: 1 });
+      .populate("user", { firstName: 1, lastName: 1, username: 1, email: 1, photo: 1 });
 
     res.json({ success: logs });
   } catch (err) {

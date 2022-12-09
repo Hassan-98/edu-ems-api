@@ -15,7 +15,7 @@ const morgan = require('morgan');
 const axios = require('axios');
 
 // Enable ENV Vars In Development
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+require('dotenv').config();
 
 // Database Connection
 require("./src/configs/db.config");
@@ -24,10 +24,10 @@ require("./src/configs/db.config");
 app.use(express.json())
 // FormData Body Parser
 app.use(bodyParser.json({ limit: '200mb' }));
-app.use(bodyParser.urlencoded({ 
+app.use(bodyParser.urlencoded({
   limit: '200mb',
   extended: true,
-  parameterLimit: 50000 
+  parameterLimit: 50000
 }));
 // Cookie Parser
 app.use(cookieParser());
@@ -39,13 +39,13 @@ app.use(helmet());
 app.use(morgan('\n:method - :url :status - :response-time ms'));
 
 app.use(async (req, res, next) => {
-  var ipaddress = (req.headers['x-forwarded-for'] || 
-    req.connection.remoteAddress || 
-    req.socket.remoteAddress || 
+  var ipaddress = (req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
     req.connection.socket.remoteAddress).split(",")[0];
 
   const { data: location } = await axios.get(`http://ip-api.com/json/${ipaddress}`);
-  
+
   req.location = location;
 
   next();
@@ -63,14 +63,14 @@ var corsOptionsDelegate = function (req, callback) {
   if (whitelist.indexOf(req.header('Origin')) > -1) corsOptions = { origin: true }
 
   else corsOptions = { origin: false }
-  
+
   callback(null, corsOptions)
 }
 
 app.use(cors());
 
 
-/*******************|  Import Routes  |*******************/ 
+/*******************|  Import Routes  |*******************/
 const authRoute = require('./src/routes/auth.route');
 const usersRoute = require('./src/routes/users.route');
 const clientsRoute = require('./src/routes/clients.route');
@@ -78,7 +78,7 @@ const activationsRoute = require('./src/routes/activations.route');
 const logsRoute = require('./src/routes/logs.route');
 const requestsRoute = require('./src/routes/requests.route');
 
-/*******************|  Use Routes  |*******************/ 
+/*******************|  Use Routes  |*******************/
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/users', usersRoute);
 app.use('/api/v1/clients', clientsRoute);
@@ -87,7 +87,7 @@ app.use('/api/v1/logs', logsRoute);
 app.use('/api/v1/requests', requestsRoute);
 
 
-/*******************|  Addional Routes  |*******************/ 
+/*******************|  Addional Routes  |*******************/
 app.get('/', (req, res) => {
   res.json({
     "api": "Edu. EMS Management API",
